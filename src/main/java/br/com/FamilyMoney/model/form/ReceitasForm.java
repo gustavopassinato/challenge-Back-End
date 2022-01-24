@@ -2,19 +2,21 @@ package br.com.FamilyMoney.model.form;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class ReceitasForm {
 	
-	private Long id;
+	@NotNull @NotEmpty 
 	private String descricao;
+	
+	@NotNull  @Min(value = 0)
 	private double valor;
+	
+	@NotNull 
 	private LocalDateTime data;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public String getDescricao() {
 		return descricao;
 	}

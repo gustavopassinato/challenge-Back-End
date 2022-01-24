@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class ReceitasController {
 	private ReceitasRepository receitasRepository;
 	
 	@PostMapping
-	public ResponseEntity<?> cadastroReceita(@RequestBody ReceitasForm receitaForm, UriComponentsBuilder
+	public ResponseEntity<?> cadastroReceita(@RequestBody @Valid ReceitasForm receitaForm, UriComponentsBuilder
 			uriBuilder) {
 		//Verificação do cumprimento da regra de negócio estabelecida
 		List<ReceitasDao> ReceitasDaoList = receitasRepository.findByDescricao(receitaForm.getDescricao());
@@ -74,7 +75,7 @@ public class ReceitasController {
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> atualizacaoReceita(@PathVariable Long id,
-			@RequestBody AtualizaReceitasForm atualizaReceitaForm){
+			@RequestBody @Valid AtualizaReceitasForm atualizaReceitaForm){
 		
 		//Verificação do cumprimento da regra de negócio estabelecida
 		List<ReceitasDao> ReceitasDaoList = receitasRepository.findByDescricao(atualizaReceitaForm.getDescricao());

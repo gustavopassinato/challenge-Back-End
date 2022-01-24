@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class DespesasController {
 	private DespesasRepository despesasRepository;
 	
 	@PostMapping
-	public ResponseEntity<?> cadastroDespesa(@RequestBody DespesasForm despesasForm, UriComponentsBuilder
+	public ResponseEntity<?> cadastroDespesa(@RequestBody @Valid DespesasForm despesasForm, UriComponentsBuilder
 			uriBuilder) {
 		//Verificação do cumprimento da regra de negócio estabelecida
 		List<DespesasDao> despesaDaoList = despesasRepository.findByDescricao(despesasForm.getDescricao());
@@ -70,7 +71,7 @@ public class DespesasController {
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> atualizaDespesa(@PathVariable Long id, 
-			@RequestBody AtualizaDespesaForm atualizaForm){
+			@RequestBody @Valid AtualizaDespesaForm atualizaForm){
 		
 		//Verificação do cumprimento da regra de negócio estabelecida
 		List<DespesasDao> despesaDaoList = despesasRepository.findByDescricao(atualizaForm.getDescricao());

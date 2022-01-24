@@ -2,11 +2,20 @@ package br.com.FamilyMoney.model.form;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 public class DespesasForm {
 	
+	@NotNull @NotEmpty 
 	private String descricao;
+	
+	@NotNull  @Min(value = 0)
 	private double valor;
+	
+	@NotNull 
 	private LocalDateTime data;
 	
 	

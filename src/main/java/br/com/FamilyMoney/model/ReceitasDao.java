@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import br.com.FamilyMoney.model.form.AtualizaReceitasForm;
 import br.com.FamilyMoney.model.form.ReceitasForm;
 
 @Entity

@@ -2,6 +2,7 @@ package br.com.FamilyMoney.model.form;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -10,13 +11,13 @@ import br.com.FamilyMoney.repository.ReceitasRepository;
 
 public class AtualizaReceitasForm {
 	
-	@NotNull @NotEmpty
+	@NotNull @NotEmpty 
 	private String descricao;
 	
-	@NotNull @NotEmpty
+	@NotNull @Min(value = 0)
 	private double valor;
 	
-	@NotNull @NotEmpty
+	@NotNull 
 	private LocalDateTime data;
 	
 	
